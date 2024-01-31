@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantekilla - Home</title>
+    <link rel="stylesheet" href="mantekilla.css">
+</head>
+
+<body>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="mantekillaHOME.html">
+                <img class="logo" src="mantekilla/mantekillapics/logo.png" alt="logo">
+            </a>
+        </div>
+
+        <b><a class="hometxt" href="mantekillaSTORE.html">Online Store</a></b>
+        <b><a class="hometxt" href="mantekillaLOOKBOOK.html">Lookbook</a></b>
+        <b><a class="hometxt" href="#">Community</a></b>
+    </nav>
+
+    <div class="overlay" id="overlay"></div>
+
+<div class="header-content">
+    <div class="icon-buttons">
+        <button class="search-icon-button" onclick="showSearchBox()">🔍</button>
+        <button class="cart-icon-button" onclick="showShoppingCart()">🛒</button>
+    </div>
+
+    <div class="search-box-container" id="searchBoxContainer">
+        <div class="box">
+            <input type="text" id="searchBox" placeholder="Search products...">
+            <button onclick="hideOverlay()">Close</button>
+        </div>
+    </div>
+    <div class="cart-container" id="cartContainer">
+        <div class="box">
+            <!-- Sample content for the shopping cart -->
+            <h2>Your Shopping Cart</h2>
+            <ul>
+                <li>Product 1 - $10.99</li>
+                <li>Product 2 - $19.99</li>
+            </ul>
+            <button onclick="hideOverlay()">Close</button>
+        </div>
+    </div>
+</div>    
+</header>
+
+<main class="lookbook-page">
+    <div>
+        <div class="lookbook-main">
+            <img src="mantekilla/mantekillapics/stockpics6.webp" alt="lookbook Image 1">
+            <h3 class="h3">FW 23</h3>
+        </div>
+        <div class="lookbook-card">
+            <img src="mantekilla/mantekillapics/lookbook2.webp" alt="lookbook Image 2">
+            <h3 class="h3">SS 23</h3>
+        </div>
+        <div class="lookbook-card">
+            <img src="mantekilla/mantekillapics/lookbook1.webp" alt="lookbook Image 2">
+            <h3 class="h3">FW 22</h3>
+        </div>
+        <div class="lookbook-card">
+            <img src="mantekilla/mantekillapics/lookbook3.webp" alt="lookbook Image 3">
+            <h3 class="h3">SS 22</h3>
+        </div>
+    </div>
+</main>
+ 
+<footer>
+    <p id="footertext">&copy; 2023 Max Asensio. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#top" id="back-to-top">Back to Top</a></p>
+</footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var imageUrls = [
+            'mantekilla/mantekillapics/stockpics5.webp',
+            'mantekilla/mantekillapics/stockpics2.webp',
+            'mantekilla/mantekillapics/stockpics6.webp',
+            'mantekilla/mantekillapics/stockpics7.webp',
+        ];
+
+        var currentImageIndex = 0;
+        var slideshowContainer = document.querySelector('.slideshow-container');
+
+        function showNextImage() {
+    // Create a new image element
+    var newImage = document.createElement('img');
+    newImage.classList.add('slideshow-image');
+    newImage.src = imageUrls[currentImageIndex];
+    newImage.alt = 'Slideshow Image';
+
+    // Replace the content of the slideshow container with the new image
+    slideshowContainer.innerHTML = '';
+    slideshowContainer.appendChild(newImage);
+
+    // Increment the image index
+    currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+}
+
+        // Set an interval to change the image every 3 seconds
+        setInterval(showNextImage, 3000);
+    });
+</script>
+
+<script>
+
+    // Function to show the search box
+    function showSearchBox() {
+        // Get the overlay element
+        var overlay = document.getElementById('overlay');
+        // Make the overlay visible
+        overlay.style.display = 'block';
+
+        // Get the search box container element
+        var searchBoxContainer = document.getElementById('searchBoxContainer');
+        // Make the search box container visible
+        searchBoxContainer.style.display = 'block';
+    }
+
+    // Function to show the shopping cart
+    function showShoppingCart() {
+        // Get the overlay element
+        var overlay = document.getElementById('overlay');
+        // Make the overlay visible
+        overlay.style.display = 'block';
+
+        // Get the cart container element
+        var cartContainer = document.getElementById('cartContainer');
+        // Make the cart container visible
+        cartContainer.style.display = 'block';
+    }
+
+    // Function to hide the overlay, search box, and cart container
+    function hideOverlay() {
+        // Get the overlay element
+        var overlay = document.getElementById('overlay');
+        // Hide the overlay
+        overlay.style.display = 'none';
+
+        // Get the search box container element
+        var searchBoxContainer = document.getElementById('searchBoxContainer');
+        // Hide the search box container
+        searchBoxContainer.style.display = 'none';
+
+        // Get the cart container element
+        var cartContainer = document.getElementById('cartContainer');
+        // Hide the cart container
+        cartContainer.style.display = 'none';
+    }   
+
+    function toggleDropdown() {
+    var dropdownContent = document.getElementById('dropdownContent');
+    dropdownContent.classList.toggle('show');
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+</script>
+
+
+</body>
+</html>
